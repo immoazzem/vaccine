@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVaccinationCentersTable extends Migration
+class CreateUpazilasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateVaccinationCentersTable extends Migration
      */
     public function up()
     {
-        Schema::create('vaccination_centers', function (Blueprint $table) {
+        Schema::create('upazilas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('upazila_id');
-            $table->unsignedBigInteger('vaccine_id');
-            $table->unsignedBigInteger('available');
+            $table->unsignedBigInteger('district_id');
             $table->unsignedBigInteger('enabled')->default(1);
+            $table->string('bn_name')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
 
-            $table->foreign('upazila_id')->references('id')->on('upazilas');
+            $table->foreign('district_id')->references('id')->on('districts');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateVaccinationCentersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vaccination_centers');
+        Schema::dropIfExists('upazilas');
     }
 }

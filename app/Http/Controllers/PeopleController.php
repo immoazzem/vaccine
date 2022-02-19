@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Division;
+use App\Models\People;
 use Illuminate\Http\Request;
 
-class DivisionController extends Controller
+class PeopleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class DivisionController extends Controller
     public function index()
     {
         //
-        $divisions = Division::paginate('10');
-        return view('divisions.index', compact('divisions'));
     }
 
     /**
@@ -43,10 +41,10 @@ class DivisionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Division  $division
+     * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function show(Division $division)
+    public function show(People $people)
     {
         //
     }
@@ -54,10 +52,10 @@ class DivisionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Division  $division
+     * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function edit(Division $division)
+    public function edit(People $people)
     {
         //
     }
@@ -66,10 +64,10 @@ class DivisionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Division  $division
+     * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Division $division)
+    public function update(Request $request, People $people)
     {
         //
     }
@@ -77,10 +75,10 @@ class DivisionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Division  $division
+     * @param  \App\Models\People  $people
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Division $division)
+    public function destroy(People $people)
     {
         //
     }

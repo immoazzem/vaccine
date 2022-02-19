@@ -29,7 +29,6 @@
                                 <td class="border-l border-t px-1 py-2 text-center"><a href="{{ route('categories.edit', $category->id) }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-400 rounded shadow">Edit</a></td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUpazilasTable extends Migration
+class CreatePeopleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateUpazilasTable extends Migration
      */
     public function up()
     {
-        Schema::create('upazilas', function (Blueprint $table) {
+        Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('district_id');
-            $table->unsignedBigInteger('enabled')->default(1);
+            $table->string('id_no');
+            $table->dateTime('dob');
+            $table->string('office');
+            $table->unsignedBigInteger('registered')->default(0);
             $table->timestamps();
-
-            $table->foreign('district_id')->references('id')->on('districts');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateUpazilasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('upazilas');
+        Schema::dropIfExists('people');
     }
 }
