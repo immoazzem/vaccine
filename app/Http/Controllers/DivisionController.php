@@ -84,4 +84,18 @@ class DivisionController extends Controller
     {
         //
     }
+
+    //Division Enable Disable
+    public function enableDisable($id)
+    {
+        $division = Division::findOrFail($id);
+        $division->enabled = !$division->enabled;
+        $division->save();
+
+        $notification = array(
+            'message' => 'Division '. $division->name.' has been updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('divisions.index')->with($notification);
+    }
 }

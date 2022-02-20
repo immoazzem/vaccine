@@ -19,7 +19,19 @@
                         {{ __('Category') }}
                     </x-nav-link>
                     <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
-                        {{ __('Divisions') }}
+                        {{ __('Locations') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('people.index')" :active="request()->routeIs('people.index')">
+                        {{ __('People') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                        {{ __('Vaccines') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                        {{ __('Vaccination Centers') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                        {{ __('Registration') }}
                     </x-nav-link>
                 </div>
             </div>

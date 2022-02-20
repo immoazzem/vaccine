@@ -15,6 +15,8 @@ class PeopleController extends Controller
     public function index()
     {
         //
+        $peoples = People::all();
+        return view('people.index', compact('peoples'));
     }
 
     /**
@@ -81,5 +83,14 @@ class PeopleController extends Controller
     public function destroy(People $people)
     {
         //
+    }
+
+    //
+    public function registeredUnregistered($id)
+    {
+        $people = People::find($id);
+        $people->registered = !$people->registered;
+        $people->save();
+        return redirect()->back();
     }
 }
