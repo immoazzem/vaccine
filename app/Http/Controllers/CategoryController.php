@@ -59,8 +59,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
-        $categories = Category::all();
-        return view('categories.edit', ['categories' => $categories]);
+        return view('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -73,6 +72,22 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        $validate = $request->validate([
+            'name' => 'required',
+            'min_age' => 'required'
+        ]);
+
+        $category->name = $request->name;
+        $category->min_age = $request->min_age;
+        $category->save();
+
+        // $notification = array(
+        //     'message' => 'Category updated successfully!',
+        //     'alert-type' => 'success'
+        // );
+        
+        notify()->success('Category updated successfully!');
+        return redirect()->route('categories.index');
     }
 
     /**

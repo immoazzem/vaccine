@@ -735,3 +735,16 @@ function vac_bd_vaccines()
     );
     return $vaccines;
 }
+
+function getAge($date)
+{
+    $dob = new DateTime($date);
+
+    $now = new DateTime();
+
+    $difference = $now->diff($dob);
+
+    $age = $difference->y;
+
+    return  $age;
+}
