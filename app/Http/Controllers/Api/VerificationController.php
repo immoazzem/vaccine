@@ -13,22 +13,23 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {
 
-        $data = [
-            'success' => false,
-            'message' => '',
-            'people' => []
-        ];
+        // $data = [
+        //     'success' => false,
+        //     'message' => '',
+        //     'people' => []
+        // ];
+        //$data['message'] = 
 
         if (empty($request->category_id)) {
-            return $data['message'] = "category id needed";
+            return 'category id needed';
         }
 
         if (empty($request->id_no)) {
-            return $data['message'] = "ID no needed";
+            return 'ID no needed';
         }
 
         if (empty($request->dob)) {
-            return $data['message'] = "Date of birth needed";
+            return 'Date of birth needed';
         }
 
 
@@ -36,7 +37,7 @@ class VerificationController extends Controller
 
         //check if NID exists
         if (empty($people)) {
-            return $data['message'] = "ID Not found";
+            return 'ID Not found';
         } else {
             //check if Dob matches
 
@@ -44,21 +45,25 @@ class VerificationController extends Controller
             $category = Category::where('id', $request->category_id)->first();
 
             if (empty($category)) {
-                return $data['message'] = "Category not found";
+                return 'Category not found';
             } else {
                 //check age eligibility
                 $current_age = getAge($people->dob);
                 if ($current_age >= $category->min_age) {
                     //registration allowed
-
+                    if ($people->registered == 1) {
+                        return 'Already registered';
+                    }else{
+                        return $people;
+                    }
 
                 } else {
-                    return $data['message'] = 'Minimum age for ' . $category->name . ' is ' . $category->min_age;
+                    return 'Minimum age for ' . $category->name . ' is ' . $category->min_age;
                 }
             }
         }
 
 
-        return $data;
+        // return $data;
     }
 }
