@@ -13,57 +13,57 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {
 
-        // $data = [
-        //     'success' => false,
-        //     'message' => '',
-        //     'people' => []
-        // ];
-        //$data['message'] = 
+        $data = [
+            'success' => false,
+            'message' => '',
+            'people' => []
+        ];
 
         if (empty($request->category_id)) {
-            return 'category id needed';
+            $data['message'] = 'Please Select Category';
         }
 
         if (empty($request->id_no)) {
-            return 'ID no needed';
+            $data['message'] = 'Please Enter ID Number';
         }
 
         if (empty($request->dob)) {
-            return 'Date of birth needed';
-        }
+            $data['message'] = 'Please Enter Date of Birth';
+        }// return dob
 
 
         $people = People::where('id_no', $request->id_no)->where('dob', $request->dob)->first();
 
         //check if NID exists
         if (empty($people)) {
-            return 'ID Not found';
+            $data['message'] = 'No Record Found';
         } else {
-            //check if Dob matches
-
-            //Dob matched
             $category = Category::where('id', $request->category_id)->first();
 
             if (empty($category)) {
-                return 'Category not found';
+                $data['message'] = 'No Category Found';
             } else {
                 //check age eligibility
                 $current_age = getAge($people->dob);
                 if ($current_age >= $category->min_age) {
                     //registration allowed
-                    if ($people->registered == 1) {
-                        return 'Already registered';
+                    if ($people->registered) {
+                        $data['message'] = 'Already Registered'; 
                     }else{
-                        return $people;
+                        $data = [
+                            'success' => true,
+                            'message' => 'Enter Your Information',
+                            'people' => $people
+                        ];
                     }
 
                 } else {
-                    return 'Minimum age for ' . $category->name . ' is ' . $category->min_age;
+                    $data['message'] = 'Minimum age for ' . $category->name . ' is ' . $category->min_age;
                 }
             }
         }
 
 
-        // return $data;
+        return $data;
     }
 }
