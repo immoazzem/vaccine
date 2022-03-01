@@ -22,6 +22,14 @@ Route::get('/test', function(){
 
 Route::post('/verify', [VerificationController::class, 'verify']);
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/divisions', [CategoryController::class, 'divisions']);
+Route::get('/districts', [CategoryController::class, 'districts']);
+Route::get('/upazilas', [CategoryController::class, 'upazilas']);
+Route::get('/vaccination-centers', [CategoryController::class, 'vaccinationCenters']);
+
+Route::post('/phone-verify', [CategoryController::class, 'phoneVerify']);
+Route::post('/phone-verify-code', [CategoryController::class, 'phoneVerifyCode']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
