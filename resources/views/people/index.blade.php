@@ -28,7 +28,7 @@
                                 <td class="border-l border-t px-1 py-2 text-center whitespace-nowrap">{{ $people->id_no }}</td>
                                 <td class="border-l border-t px-1 py-2 text-center whitespace-nowrap">{{ $people->dob }}</td>
                                 <td class="border-l border-t px-1 py-2 text-center whitespace-nowrap">{{ $people->office }}</td>
-                                <td class="border-l border-t px-1 py-2 text-left">
+                                <td class="border-l border-t px-1 py-2 text-center">
                                     @if($people->registered == 0) <del> @endif
                                     {{ $people->registered }}
                                     @if($people->registered == 0) </del> @endif

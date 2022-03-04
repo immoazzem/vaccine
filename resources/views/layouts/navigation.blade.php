@@ -24,13 +24,13 @@
                     <x-nav-link :href="route('people.index')" :active="request()->routeIs('people.index')">
                         {{ __('People') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                    <x-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
                         {{ __('Vaccines') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                    <x-nav-link :href="route('vaccination-centers.index')" :active="request()->routeIs('vaccination-centers.index')">
                         {{ __('Vaccination Centers') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                    <x-nav-link :href="route('registration.index')" :active="request()->routeIs('registration.index')">
                         {{ __('Registration') }}
                     </x-nav-link>
                 </div>

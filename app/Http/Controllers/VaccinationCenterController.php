@@ -15,6 +15,8 @@ class VaccinationCenterController extends Controller
     public function index()
     {
         //
+        $allCenter = VaccinationCenter::all();
+        return view('vaccination_centers.index', compact('allCenter'));
     }
 
     /**
@@ -81,5 +83,19 @@ class VaccinationCenterController extends Controller
     public function destroy(VaccinationCenter $vaccinationCenter)
     {
         //
+    }
+
+    //
+    public function centerEnableDisable($id)
+    {
+        $center = VaccinationCenter::findOrFail($id);
+        $center->enabled = !$center->enabled;
+        $center->save();
+
+        $notification = array(
+            'message' => 'Vaccination Center '. $center->name.' has been updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('vaccination-centers.index')->with($notification);
     }
 }

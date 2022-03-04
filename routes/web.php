@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('vaccines', VaccineController::class);
     Route::post('/vaccines-enable-disable/{id}', [VaccineController::class, 'enableDisable'])->name('vaccines-enable-disable');
     Route::resource('vaccination-centers', VaccinationCenterController::class);
+    Route::post('/vaccines-enable-disable/{id}', [VaccinationCenterController::class, 'centerEnableDisable'])->name('center-enable-disable');
     Route::resource('registration', RegistrationController::class);
 });
 

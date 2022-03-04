@@ -15,6 +15,8 @@ class RegistrationController extends Controller
     public function index()
     {
         //
+        $reg = Registration::all();
+        return view('registration.index', compact('reg'));
     }
 
     /**
@@ -58,6 +60,7 @@ class RegistrationController extends Controller
     public function edit(Registration $registration)
     {
         //
+        return view('registration.edit', compact('registration'));
     }
 
     /**
@@ -70,6 +73,22 @@ class RegistrationController extends Controller
     public function update(Request $request, Registration $registration)
     {
         //
+        $registration->name = $request->name;
+        $registration->dob = $request->dob;
+        $registration->phone_no = $request->phone_no;
+        $registration->center_id = $request->center_id;
+        $registration->upcoming_date = $request->upcoming_date;
+        $registration->v1_date = $request->v1_date;
+        $registration->v2_date = $request->v2_date;
+        $registration->v3_date = $request->v3_date;
+        $registration->unique_id = $request->unique_id;
+        $registration->diabates = $request->diabates;
+        $registration->upcoming_date = $request->upcoming_date;
+
+        $registration->save();
+
+        notify()->success('Registration Information updated successfully!');
+        return redirect()->route('registration.index');
     }
 
     /**

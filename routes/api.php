@@ -29,6 +29,13 @@ Route::get('/vaccination-centers', [CategoryController::class, 'vaccinationCente
 
 Route::post('/phone-verify', [CategoryController::class, 'phoneVerify']);
 Route::post('/phone-verify-code', [CategoryController::class, 'phoneVerifyCode']);
+Route::post('/register-vaccine', [CategoryController::class, 'registerPeople']);
+
+Route::post('/vaccine-card', [CategoryController::class, 'vaccineCard']);
+Route::post('/vaccine-card-print', [CategoryController::class, 'vaccineCardPrint']);
+Route::post('/vaccine-certificate', [CategoryController::class, 'vaccineCertificate']);
+Route::post('/vaccine-certificate-print', [CategoryController::class, 'vaccineCertificatePrint']);
+Route::post('/vaccine-reg-verify', [CategoryController::class, 'vaccineRegVerify']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
