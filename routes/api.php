@@ -37,6 +37,8 @@ Route::post('/vaccine-certificate', [CategoryController::class, 'vaccineCertific
 Route::post('/vaccine-certificate-print', [CategoryController::class, 'vaccineCertificatePrint']);
 Route::post('/vaccine-reg-verify', [CategoryController::class, 'vaccineRegVerify']);
 
+Route::post('/registration-status', [CategoryController::class, 'registrationStatus']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

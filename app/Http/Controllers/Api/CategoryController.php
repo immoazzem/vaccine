@@ -102,4 +102,12 @@ class CategoryController extends Controller
 
         return response()->json(['message' => 'success']);
     }
+
+    public function registrationStatus(Request $request)
+    {
+        $id_no = $request->id_no;
+        $registration = Registration::where('id_no', $id_no)->first();
+
+        return response()->json($registration);
+    }
 }
